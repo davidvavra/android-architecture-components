@@ -20,7 +20,7 @@ import android.arch.lifecycle.LifecycleActivity
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
-import com.example.android.observability.Injection
+import com.example.android.observability.provideViewModelFactory
 import com.example.android.persistence.R
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -43,7 +43,7 @@ class UserActivity : LifecycleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
 
-        mViewModelFactory = Injection.provideViewModelFactory(this)
+        mViewModelFactory = provideViewModelFactory()
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(UserViewModel::class.java)
         vUpdate.setOnClickListener { updateUserName() }
     }
