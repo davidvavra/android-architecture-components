@@ -7,19 +7,19 @@
               tools:context="com.example.android.persistence.migrations.UserActivity">
 
     <TextView
-        android:id="@+id/user_name"
+        android:id="@+id/vUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="32sp"
         tools:text="Hello World!"/>
 
     <EditText
-        android:id="@+id/user_name_input"
+        android:id="@+id/vInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/update_user"
+        android:id="@+id/vUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/update_user"/>
