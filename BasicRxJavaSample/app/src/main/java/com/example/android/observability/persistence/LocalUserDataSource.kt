@@ -14,35 +14,26 @@
  * limitations under the License.
  */
 
-package com.example.android.observability.persistence;
+package com.example.android.observability.persistence
 
-import com.example.android.observability.UserDataSource;
+import com.example.android.observability.UserDataSource
 
-import io.reactivex.Flowable;
+import io.reactivex.Flowable
 
 /**
  * Using the Room database as a data source.
  */
-public class LocalUserDataSource implements UserDataSource {
+class LocalUserDataSource(private val mUserDao: UserDao) : UserDataSource {
 
-    private final UserDao mUserDao;
-
-    public LocalUserDataSource(UserDao userDao) {
-        mUserDao = userDao;
+    override fun getUser(): Flowable<User> {
+        return mUserDao.user
     }
 
-    @Override
-    public Flowable<User> getUser() {
-        return mUserDao.getUser();
+    override fun insertOrUpdateUser(user: User) {
+        mUserDao.insertUser(user)
     }
 
-    @Override
-    public void insertOrUpdateUser(User user) {
-        mUserDao.insertUser(user);
-    }
-
-    @Override
-    public void deleteAllUsers() {
-        mUserDao.deleteAllUsers();
+    override fun deleteAllUsers() {
+        mUserDao.deleteAllUsers()
     }
 }

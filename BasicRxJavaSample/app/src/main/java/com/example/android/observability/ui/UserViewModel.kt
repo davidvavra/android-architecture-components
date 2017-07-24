@@ -38,7 +38,7 @@ class UserViewModel(private val mDataSource: UserDataSource) : ViewModel() {
      */
     // for every emission of the user, get the user name
     val userName: Flowable<String>
-        get() = mDataSource.user
+        get() = mDataSource.getUser()
                 .map { (_, userName1) -> userName1 }
 
     /**
@@ -57,8 +57,7 @@ class UserViewModel(private val mDataSource: UserDataSource) : ViewModel() {
                 mUser = User()
             }
             mUser?.userName = userName
-
-            mDataSource.insertOrUpdateUser(mUser)
+            mUser?.let { mDataSource.insertOrUpdateUser(it) }
         })
     }
 }

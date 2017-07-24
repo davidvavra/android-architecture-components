@@ -14,33 +14,33 @@
  * limitations under the License.
  */
 
-package com.example.android.observability;
+package com.example.android.observability
 
-import com.example.android.observability.persistence.User;
+import com.example.android.observability.persistence.User
 
-import io.reactivex.Flowable;
+import io.reactivex.Flowable
 
 /**
  * Access point for accessing user data.
  */
-public interface UserDataSource {
+interface UserDataSource {
 
     /**
      * Gets the user from the data source.
-     *
+
      * @return the user from the data source.
      */
-    Flowable<User> getUser();
+    fun getUser(): Flowable<User>
 
     /**
      * Inserts the user in the data source, or, if this is an existing user, it updates it.
-     *
+
      * @param user the user to be inserted or updated.
      */
-    void insertOrUpdateUser(User user);
+    fun insertOrUpdateUser(user: User)
 
     /**
      * Deletes all users from the data source.
      */
-    void deleteAllUsers();
+    fun deleteAllUsers()
 }

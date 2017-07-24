@@ -33,6 +33,7 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.architectureComponentsVersion"
     compile "android.arch.persistence.room:runtime:$rootProject.architectureComponentsVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$rootProject.architectureComponentsVersion"
+    kapt "android.arch.persistence.room:compiler:$rootProject.architectureComponentsVersion"
     compile "android.arch.persistence.room:rxjava2:$rootProject.architectureComponentsVersion"
 
     // RxJava
