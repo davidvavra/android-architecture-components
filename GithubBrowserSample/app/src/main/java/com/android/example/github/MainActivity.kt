@@ -29,9 +29,9 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), LifecycleRegistryOwner, HasSupportFragmentInjector {
     private val lifecycleRegistry = LifecycleRegistry(this)
     @Inject
-    internal lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     @Inject
-    internal lateinit var navigationController: NavigationController
+    lateinit var navigationController: NavigationController
 
     override fun getLifecycle(): LifecycleRegistry {
         return lifecycleRegistry

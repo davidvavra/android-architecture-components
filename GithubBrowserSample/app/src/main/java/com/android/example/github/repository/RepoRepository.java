@@ -16,6 +16,11 @@
 
 package com.android.example.github.repository;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Transformations;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import com.android.example.github.AppExecutors;
 import com.android.example.github.api.ApiResponse;
 import com.android.example.github.api.GithubService;
@@ -25,14 +30,10 @@ import com.android.example.github.db.RepoDao;
 import com.android.example.github.util.AbsentLiveData;
 import com.android.example.github.util.RateLimiter;
 import com.android.example.github.vo.Contributor;
+import com.android.example.github.vo.Owner;
 import com.android.example.github.vo.Repo;
 import com.android.example.github.vo.RepoSearchResult;
 import com.android.example.github.vo.Resource;
-
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Transformations;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -138,9 +139,9 @@ public class RepoRepository {
                 }
                 db.beginTransaction();
                 try {
-                    repoDao.createRepoIfNotExists(new Repo(Repo.UNKNOWN_ID,
+                    repoDao.createRepoIfNotExists(new Repo(Repo.Companion.getUNKNOWN_ID(),
                             name, owner + "/" + name, "",
-                            new Repo.Owner(owner, null), 0));
+                            new Owner(owner, null), 0));
                     repoDao.insertContributors(contributors);
                     db.setTransactionSuccessful();
                 } finally {

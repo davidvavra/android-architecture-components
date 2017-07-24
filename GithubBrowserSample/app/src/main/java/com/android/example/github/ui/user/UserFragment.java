@@ -16,14 +16,6 @@
 
 package com.android.example.github.ui.user;
 
-import com.android.example.github.R;
-import com.android.example.github.binding.FragmentDataBindingComponent;
-import com.android.example.github.databinding.UserFragmentBinding;
-import com.android.example.github.di.Injectable;
-import com.android.example.github.ui.common.NavigationController;
-import com.android.example.github.ui.common.RepoListAdapter;
-import com.android.example.github.util.AutoClearedValue;
-
 import android.arch.lifecycle.LifecycleFragment;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -34,6 +26,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.example.github.R;
+import com.android.example.github.binding.FragmentDataBindingComponent;
+import com.android.example.github.databinding.UserFragmentBinding;
+import com.android.example.github.di.Injectable;
+import com.android.example.github.ui.common.NavigationController;
+import com.android.example.github.ui.common.RepoListAdapter;
+import com.android.example.github.util.AutoClearedValue;
 
 import javax.inject.Inject;
 
@@ -80,7 +80,7 @@ public class UserFragment extends LifecycleFragment implements Injectable {
             binding.get().executePendingBindings();
         });
         RepoListAdapter rvAdapter = new RepoListAdapter(dataBindingComponent, false,
-                repo -> navigationController.navigateToRepo(repo.owner.login, repo.name));
+                repo -> navigationController.navigateToRepo(repo.getOwner().getLogin(), repo.getName()));
         binding.get().repoList.setAdapter(rvAdapter);
         this.adapter = new AutoClearedValue<>(this, rvAdapter);
         initRepoList();

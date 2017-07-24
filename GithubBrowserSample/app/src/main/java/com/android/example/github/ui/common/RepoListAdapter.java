@@ -16,15 +16,15 @@
 
 package com.android.example.github.ui.common;
 
-import com.android.example.github.R;
-import com.android.example.github.databinding.RepoItemBinding;
-import com.android.example.github.util.Objects;
-import com.android.example.github.vo.Repo;
-
 import android.databinding.DataBindingComponent;
 import android.databinding.DataBindingUtil;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import com.android.example.github.R;
+import com.android.example.github.databinding.RepoItemBinding;
+import com.android.example.github.util.Objects;
+import com.android.example.github.vo.Repo;
 
 /**
  * A RecyclerView adapter for {@link Repo} class.
@@ -63,14 +63,14 @@ public class RepoListAdapter extends DataBoundListAdapter<Repo, RepoItemBinding>
 
     @Override
     protected boolean areItemsTheSame(Repo oldItem, Repo newItem) {
-        return Objects.equals(oldItem.owner, newItem.owner) &&
-                Objects.equals(oldItem.name, newItem.name);
+        return Objects.equals(oldItem.getOwner(), newItem.getOwner()) &&
+                Objects.equals(oldItem.getName(), newItem.getName());
     }
 
     @Override
     protected boolean areContentsTheSame(Repo oldItem, Repo newItem) {
-        return Objects.equals(oldItem.description, newItem.description) &&
-                oldItem.stars == newItem.stars;
+        return Objects.equals(oldItem.getDescription(), newItem.getDescription()) &&
+                oldItem.getStars() == newItem.getStars();
     }
 
     public interface RepoClickCallback {

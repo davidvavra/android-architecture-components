@@ -17,11 +17,10 @@
 package com.android.example.github.api;
 
 
-import com.google.gson.annotations.SerializedName;
+import android.support.annotation.NonNull;
 
 import com.android.example.github.vo.Repo;
-
-import android.support.annotation.NonNull;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +64,7 @@ public class RepoSearchResponse {
     public List<Integer> getRepoIds() {
         List<Integer> repoIds = new ArrayList<>();
         for (Repo repo : items) {
-            repoIds.add(repo.id);
+            repoIds.add(repo.getId());
         }
         return repoIds;
     }

@@ -51,7 +51,7 @@ public class TestUtil {
     public static Contributor createContributor(Repo repo, String login, int contributions) {
         Contributor contributor = new Contributor(login, contributions, null);
         contributor.setRepoName(repo.name);
-        contributor.setRepoOwner(repo.owner.login);
+        contributor.setRepoOwner(repo.owner.getLogin());
         return contributor;
     }
 }
